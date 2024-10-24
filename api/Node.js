@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 let receivedData = [];
-app.use(cors());
-
 // Middleware
 app.use(bodyParser.json());
 
