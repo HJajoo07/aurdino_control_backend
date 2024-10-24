@@ -23,7 +23,7 @@ app.post('/data', (req, res) => {
         receivedData.push(data); // Add new data to the array
 
         // Ensure the array only keeps the latest 10 readings
-        if (receivedData.length > 10) {
+        if (receivedData.length > 50) {
             receivedData.shift(); // Remove the oldest data when the array exceeds 10 elements
         }
 
