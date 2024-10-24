@@ -1,17 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
-const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
-
-// Store received data in memory (you can use a database for persistent storage)
 let receivedData = [];
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files (HTML, CSS, JS)
 
 // Endpoint to receive data from the Android app
 app.post('/data', (req, res) => {
@@ -31,7 +25,7 @@ app.get('/data', (req, res) => {
     res.json({ data: receivedData });
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+// Export the Express app for Vercel to handle
+module.exports = app;
+
+// Vercel handles listening, so do not call app.listen
