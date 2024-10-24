@@ -1,17 +1,9 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 
 const app = express();
 let receivedData = [];
-
-// Use CORS middleware with options
-app.use(cors({
-    origin: 'https://aurdino-control-frontend.vercel.app', // Replace with your actual frontend domain
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
-}));
-
 // Middleware
 app.use(bodyParser.json());
 
@@ -35,3 +27,5 @@ app.get('/data', (req, res) => {
 
 // Export the Express app for Vercel to handle
 module.exports = app;
+
+// Vercel handles listening, so do not call app.listen
