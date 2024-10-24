@@ -2,9 +2,9 @@
     "name": "aurdino-control-backend",
     "version": "1.0.0",
     "description": "Backend server for Arduino control website",
-    "main": "node.js",  
+    "main": "Node.js",  
     "scripts": {
-      "start": "node node.js" 
+      "start": "node Node.js" 
     },
     "dependencies": {
       "express": "^4.17.1",
