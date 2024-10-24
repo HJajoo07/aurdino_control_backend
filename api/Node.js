@@ -1,11 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 let receivedData = []; // Array to store up to 10 readings
 
 // Middleware
 app.use(bodyParser.json());
+
+// CORS configuration to allow requests from your frontend domain
+app.use(cors({
+    origin: 'https://aurdino-control-frontend.vercel.app', // Replace with your frontend domain
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true // If your app requires cookies or credentials, set to true
+}));
 
 // Endpoint to receive data from the Android app
 app.post('/data', (req, res) => {
@@ -33,5 +42,3 @@ app.get('/data', (req, res) => {
 
 // Export the Express app for Vercel to handle
 module.exports = app;
-
-// Vercel handles listening, so do not call app.listen
